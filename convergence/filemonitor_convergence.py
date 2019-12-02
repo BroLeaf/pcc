@@ -16,12 +16,12 @@ class NewSnapshotEventHandler(FileSystemEventHandler):
             param = f.read()
             lines = param.split("\n")
             for line in lines:
-#                if line == "reset":
-#                    os.system("ssh -t -t -o StrictHostKeyChecking=no modong2@sender1.demopair3.UIUCScheduling.emulab.net \"killall appclient && echo "">/local/rate_pcc\"")
-#                    os.system("ssh -t -t -o StrictHostKeyChecking=no modong2@sender2.demopair3.UIUCScheduling.emulab.net \"killall appclient && echo "">/local/rate_pcc\"")
-#                    os.system("ssh -t -t -o StrictHostKeyChecking=no modong2@sender1.demopair4.UIUCScheduling.emulab.net \"killall iperf && echo ""> /local/rate_tcp\"")
-#                    os.system("ssh -t -t -o StrictHostKeyChecking=no modong2@sender2.demopair4.UIUCScheduling.emulab.net \"killall iperf && echo ""> /local/rate_tcp\"")
-#                    return
+                if line == "reset":
+                    os.system("ssh -t -t -o StrictHostKeyChecking=no modong2@sender1.demopair3.UIUCScheduling.emulab.net \"killall appclient && echo "">/local/rate_pcc\"")
+                    os.system("ssh -t -t -o StrictHostKeyChecking=no modong2@sender2.demopair3.UIUCScheduling.emulab.net \"killall appclient && echo "">/local/rate_pcc\"")
+                    os.system("ssh -t -t -o StrictHostKeyChecking=no modong2@sender1.demopair4.UIUCScheduling.emulab.net \"killall iperf && echo ""> /local/rate_tcp\"")
+                    os.system("ssh -t -t -o StrictHostKeyChecking=no modong2@sender2.demopair4.UIUCScheduling.emulab.net \"killall iperf && echo ""> /local/rate_tcp\"")
+                    return
                 if line != "":
                     flow_name = line.split(" ")[0]
                     action = line.split(" ")[1]

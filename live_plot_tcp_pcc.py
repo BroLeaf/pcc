@@ -44,10 +44,6 @@ def animate2(i):
     ax1.clear()
     ax1.plot(xar, yar1, xar, yar2)
 
-
-
-
-
 def animate(i):
     os.system("scp modong2@sender1.congestion7.uiucscheduling.emulab.net:/local/rate /home/mo/pcc/rate")
     pullData = open("rate", "r")
@@ -71,7 +67,7 @@ def animate_together(i):
     #os.system("python ftpc.py sender1.demopair2.uiucscheduling.emulab.net 5050")
     counter = counter+1
     if counter == 1:
-        print "clearing"
+        print ("clearing")
         axarr[1].clear()
         axarr[0].clear()
         axarr[1].set_xlabel("Time (s)")

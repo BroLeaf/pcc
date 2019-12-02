@@ -10,6 +10,7 @@
 #endif
 #include <iostream>
 #include <udt.h>
+#include <time.h>
 #include "cc.h"
 
 using namespace std;
@@ -19,14 +20,18 @@ void* monitor(void*);
 #else
 DWORD WINAPI monitor(LPVOID);
 #endif
-
+clock_t t1;
+float timer;
 int main(int argc, char* argv[])
 {
-   if ((3 != argc) || (0 == atoi(argv[2])))
-   {
-      cout << "usage: appclient server_ip server_port" << endl;
-      return 0;
-   }
+   t1 = clock();
+   // if ((3 != argc) || (0 == atoi(argv[2])))
+   // {
+   //    cout << "usage: appclient server_ip server_port" << endl;
+   //    return 0;
+   // }
+   timer = atof(argv[3]);
+   cout << timer << endl;
 //sleep(1500);
    // use this function to initialize the UDT library
    UDT::startup();
@@ -140,7 +145,7 @@ DWORD WINAPI monitor(LPVOID s)
 
    UDT::TRACEINFO perf;
 
-   cout << "SendRate(Mb/s)\tRTT(ms)\tCWnd\tPktSndPeriod(us)\tRecvACK\tRecvNAK" << endl;
+   // cout << "SendRate(Mb/s)\tRTT(ms)\tCWnd\tPktSndPeriod(us)\tRecvACK\tRecvNAK" << endl;
    int i=0;
    while (true)
    {
@@ -159,12 +164,13 @@ DWORD WINAPI monitor(LPVOID s)
          cout << "perfmon: " << UDT::getlasterror().getErrorMessage() << endl;
          break;
       }
-    cout << perf.mbpsSendRate << "\t\t"
-           << perf.msRTT << "\t"
-           <<  perf.pktSentTotal << "\t"
-           << perf.pktSndLossTotal << "\t\t\t"
-           << perf.pktRecvACKTotal << "\t"
-           << perf.pktRecvNAKTotal << endl;
+      cout << perf.mbpsSendRate << endl;
+   //  cout << perf.mbpsSendRate << "\t\t"
+   //         << perf.msRTT << "\t"
+   //         << perf.pktCongestionWindow << "\t"
+   //         << perf.pktSndLossTotal << "\t\t\t"
+   //         << perf.pktRecvACKTotal << "\t"
+   //         << perf.pktRecvNAKTotal << endl;
 
    }
 
